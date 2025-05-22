@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><a href="index.html">⬅ Voltar</a></nav>
+<h1>Gerenciar Eventos</h1>
+
+<section>
+    <h2>Cadastrar Endereço</h2>
+    <form id="enderecoForm">
+        <input type="text" name="cep" placeholder="CEP" required>
+        <input type="text" name="rua" placeholder="Rua" required>
+        <input type="text" name="bairro" placeholder="Bairro" required>
+        <input type="text" name="cidade" placeholder="Cidade" required>
+        <input type="text" name="numero" placeholder="Número" required>
+        <input type="text" name="complemento" placeholder="Complemento (opcional)">
+        <button type="submit">Cadastrar Endereço</button>
+    </form>
+    <p id="enderecoMensagem"></p>
+</section>
+
+<section>
+    <h2>Cadastrar Evento</h2>
+    <form id="eventoForm">
+        <input type="text" name="nome" placeholder="Nome do Evento" required>
+        <input type="text" name="data_inicial" placeholder="Data Inicial (YYYY-MM-DD)" required>
+        <input type="text" name="data_final" placeholder="Data Final (YYYY-MM-DD)" required>
+        <input type="text" name="imagem" placeholder="Imagem URL (opcional)">
+        <input type="text" name="descricao" placeholder="Descrição do Evento">
+        <input type="number" name="endereco_id" placeholder="ID do Endereço" required readonly>
+        <button type="submit">Criar Evento</button>
+    </form>
+</section>
+
+<section>
+    <h2>Eventos Cadastrados</h2>
+    <ul id="listaEventos"></ul>
+</section>
+
+<script src="eventos.js"></script>
+</body>
+</html>

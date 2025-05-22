@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Estandes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><a href="index.html">⬅ Voltar</a></nav>
+<h1>Gerenciar Estandes</h1>
+
+<form id="estandeForm">
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="text" name="tema" placeholder="Tema">
+    <input type="text" name="imagem" placeholder="Imagem URL">
+    <input type="text" name="descricao" placeholder="Descrição">
+    <input type="number" name="evento_id" placeholder="Evento ID" required>
+    <button type="submit">Criar Estande</button>
+</form>
+
+<ul id="listaEstandes"></ul>
+
+<script src="estandes.js"></script>
+</body>
+</html>
