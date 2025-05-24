@@ -6,5 +6,7 @@ if (!isLoggedIn) {
 
 document.getElementById('logoutBtn').addEventListener('click', () => {
     localStorage.removeItem('adminLoggedIn');
+    localStorage.removeItem('admin_user_id');
+    localStorage.removeItem('admin_user_name');
     window.location.href = 'login.html';
 });
