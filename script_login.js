@@ -16,8 +16,12 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
         });
 
         if (response.ok) {
+            const data = await response.json();
             alert('Login realizado com sucesso!');
             localStorage.setItem('adminLoggedIn', 'true');
+            localStorage.setItem('admin_user_id', data.id);
+            localStorage.setItem('admin_user_name', data.name);
+
             window.location.href = 'admin_area.html';
         } else {
             const errorData = await response.json();
