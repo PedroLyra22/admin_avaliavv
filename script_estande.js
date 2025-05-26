@@ -52,7 +52,9 @@ async function carregarEstandes() {
                 const div = document.createElement('div');
                 div.classList.add('estande');
 
-                const imagemHTML = estande.imagem ? `<img src="${estande.imagem}" alt="Imagem do estande ${estande.nome}" />` : '';
+                const imagemHTML = estande.imagem
+                    ? `<img src="${estande.imagem}" alt="Imagem do estande ${estande.nome}" />`
+                    : '<img src="default.jpeg" alt="Imagem padrão do estande" />';
 
                 div.innerHTML = `
                     ${imagemHTML}

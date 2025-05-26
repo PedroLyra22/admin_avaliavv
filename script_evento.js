@@ -63,11 +63,13 @@ async function carregarEventos() {
                 const div = document.createElement('div');
                 div.classList.add('evento');
 
-                const imagemHTML = evento.imagem ? `<img src="${evento.imagem}" alt="Imagem do evento ${evento.nome}" />` : '';
+                const imagemHTML = evento.imagem
+                    ? `<img src="${evento.imagem}" alt="Imagem do evento ${evento.nome}" />`
+                    : '<img src="default.jpeg" alt="Imagem padrão do evento" />';
 
 
                 div.innerHTML = `
-							  <img src="${evento.imagem}" alt="Imagem do evento" />
+							  ${imagemHTML}
 							  <div class="evento-conteudo">
 							    <h3>${evento.nome}</h3>
 							    <p><strong>Período:</strong> ${formatarData(evento.data_inicial)} até ${formatarData(evento.data_final)}</p>
