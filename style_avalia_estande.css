@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    background: #fff;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.rating-group {
+    margin-top: 10px;
+}
+
+.stars {
+    display: flex;
+    gap: 5px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.stars .star.selected {
+    color: #f59e0b;
+}
+
+input[type="file"] {
+    margin-top: 5px;
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #4338ca;
+}
+
+.mensagem {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sucesso {
+    color: green;
+}
+
+.erro {
+    color: red;
+}

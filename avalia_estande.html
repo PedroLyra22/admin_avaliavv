@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Avaliar Estande</title>
+    <link rel="stylesheet" href="style_avalia_estande.css" />
+</head>
+<body>
+<div class="container">
+    <h2>Avaliar Estande</h2>
+    <form id="formAvaliacao">
+        <div class="rating-group">
+            <label>Apresentacao</label>
+            <div class="stars" data-name="nota_apresentacao"></div>
+        </div>
+
+        <div class="rating-group">
+            <label>Idéia</label>
+            <div class="stars" data-name="nota_ideia"></div>
+        </div>
+
+        <div class="rating-group">
+            <label>Experiência</label>
+            <div class="stars" data-name="nota_experiencia"></div>
+        </div>
+
+        <button type="submit">Enviar Avaliação</button>
+    </form>
+    <div id="mensagem" class="mensagem"></div>
+</div>
+
+<script src="script_avalia_estande.js"></script>
+</body>
+</html>
