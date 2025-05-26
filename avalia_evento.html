@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avaliar Evento</title>
+  <link rel="stylesheet" href="style_avalia_evento.css" />
+</head>
+<body>
+<div class="container">
+  <h2>Avaliar Evento</h2>
+  <form id="formAvaliacao">
+    <div class="rating-group">
+      <label>Equipe</label>
+      <div class="stars" data-name="nota_equipe"></div>
+    </div>
+
+    <div class="rating-group">
+      <label>Infraestrutura</label>
+      <div class="stars" data-name="nota_infraestrutura"></div>
+    </div>
+
+    <div class="rating-group">
+      <label>Organização</label>
+      <div class="stars" data-name="nota_organizacao"></div>
+    </div>
+
+    <div class="rating-group">
+      <label>Experiência</label>
+      <div class="stars" data-name="nota_experiencia"></div>
+    </div>
+
+    <button type="submit">Enviar Avaliação</button>
+  </form>
+  <div id="mensagem" class="mensagem"></div>
+</div>
+
+<script src="script_avalia_evento.js"></script>
+</body>
+</html>
