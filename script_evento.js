@@ -51,6 +51,26 @@ function formatarData(dataIso) {
     return `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
 }
 
+function baixarQRCode(url) {
+    const qrcodeContainer = document.createElement('div');
+    const qr = new QRCode(qrcodeContainer, {
+        text: url,
+        width: 256,
+        height: 256
+    });
+
+    setTimeout(() => {
+        const img = qrcodeContainer.querySelector('img');
+        if (img) {
+            const link = document.createElement('a');
+            link.href = img.src;
+            link.download = 'qrcode.png';
+            link.click();
+        }
+    }, 300);
+}
+
+
 async function carregarEventos() {
     try {
         const response = await fetch(`http://localhost:5000/evento?admin_user_id=${adminId}`);
@@ -69,16 +89,19 @@ async function carregarEventos() {
 
 
                 div.innerHTML = `
-							  ${imagemHTML}
-							  <div class="evento-conteudo">
-							    <h3>${evento.nome}</h3>
-							    <p><strong>Período:</strong> ${formatarData(evento.data_inicial)} até ${formatarData(evento.data_final)}</p>
-							    <p><strong>Endereço:</strong> ${evento.rua}, ${evento.numero} - ${evento.bairro}, ${evento.cidade}</p>
-							    <p><strong>Descrição:</strong> ${evento.descricao}</p>
-							    <button class="btn-excluir" onclick="deletarEvento(${evento.id})">Excluir</button>
-							    <button class="btn-feedback" onclick="window.location.href='http://localhost/notalise/feed_back_evento.html?evento_id=${evento.id}'">Ver Feedback</button>
-							  </div>
-							`;
+                    ${imagemHTML}
+                    <div class="evento-conteudo">
+                        <h3>${evento.nome}</h3>
+                        <p><strong>Período:</strong> ${formatarData(evento.data_inicial)} até ${formatarData(evento.data_final)}</p>
+                        <p><strong>Endereço:</strong> ${evento.rua}, ${evento.numero} - ${evento.bairro}, ${evento.cidade}</p>
+                        <p><strong>Descrição:</strong> ${evento.descricao}</p>
+                        <div class="botoes-acoes">
+                            <button class="btn-excluir" onclick="deletarEvento(${evento.id})">Excluir</button>
+                            <button class="btn-qrcode" onclick="baixarQRCode('http://localhost/notalise/avalia_evento.html?evento_id=${evento.id}', '${evento.nome}')">Baixar QR Code</button>
+                        </div>
+                        <button class="btn-feedback" onclick="window.location.href='http://localhost/notalise/feed_back_evento.html?evento_id=${evento.id}'">Ver Feedback</button>
+                    </div>
+                `;
 
                 lista.appendChild(div);
             });
