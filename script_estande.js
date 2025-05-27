@@ -64,6 +64,7 @@ async function carregarEstandes() {
                         <p><strong>Descrição:</strong> ${estande.descricao}</p>
                         <p><strong>ID do Evento:</strong> ${estande.evento_id}</p>
                         <button class="btn-excluir" onclick="deletarEstande(${estande.id})">Excluir</button>
+                        <button class="btn-feedback" onclick="window.location.href='http://localhost/notalise/feed_back_estande.html?estande_id=${estande.id}'">Ver Feedback</button>
                     </div>
                 `;
 

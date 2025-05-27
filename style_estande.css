@@ -138,4 +138,17 @@ textarea {
     margin: 0.3rem 0;
     line-height: 1.4;
 }
+.btn-feedback {
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-feedback:hover {
+    background-color: #45a049;
+}
 
