@@ -76,6 +76,7 @@ async function carregarEventos() {
 							    <p><strong>Endereço:</strong> ${evento.rua}, ${evento.numero} - ${evento.bairro}, ${evento.cidade}</p>
 							    <p><strong>Descrição:</strong> ${evento.descricao}</p>
 							    <button class="btn-excluir" onclick="deletarEvento(${evento.id})">Excluir</button>
+							    <button class="btn-feedback" onclick="window.location.href='http://localhost/notalise/feed_back_evento.html?evento_id=${evento.id}'">Ver Feedback</button>
 							  </div>
 							`;
 

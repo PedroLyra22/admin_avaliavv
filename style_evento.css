@@ -135,3 +135,17 @@ textarea {
 .btn-voltar:hover {
     background-color: #5a6268;
 }
+
+.btn-feedback {
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-feedback:hover {
+    background-color: #45a049;
+}
