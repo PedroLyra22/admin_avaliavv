@@ -1,3 +1,7 @@
+const mainIp = '10.0.1.132'
+const portBackendApi = 5000
+const baseUrlBackend = `http://${mainIp}:${portBackendApi}`
+
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".stars").forEach(container => {
         for (let i = 1; i <= 5; i++) {
@@ -46,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         try {
-            const response = await fetch("http://localhost:5000/avaliacao_evento", {
+            const response = await fetch(`${baseUrlBackend}/avaliacao_evento`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
@@ -89,3 +93,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+

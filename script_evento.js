@@ -25,7 +25,8 @@ document.getElementById('evento-form').addEventListener('submit', async function
     };
 
     try {
-        const response = await fetch('http://localhost:5000/evento', {
+        const baseUrlBackend = localStorage.getItem('baseUrlBackend');
+        const response = await fetch(`${baseUrlBackend}/evento`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -73,7 +74,8 @@ function baixarQRCode(url) {
 
 async function carregarEventos() {
     try {
-        const response = await fetch(`http://localhost:5000/evento?admin_user_id=${adminId}`);
+        const baseUrlBackend = localStorage.getItem('baseUrlBackend');
+        const response = await fetch(`${baseUrlBackend}/evento?admin_user_id=${adminId}`);
         const eventos = await response.json();
         const lista = document.getElementById('eventos-lista');
         lista.innerHTML = '';
@@ -82,6 +84,7 @@ async function carregarEventos() {
             eventos.forEach(evento => {
                 const div = document.createElement('div');
                 div.classList.add('evento');
+                const baseUrlFront = localStorage.getItem('baseUrlFront');
 
                 const imagemHTML = evento.imagem
                     ? `<img src="${evento.imagem}" alt="Imagem do evento ${evento.nome}" />`
@@ -97,9 +100,9 @@ async function carregarEventos() {
                         <p><strong>Descrição:</strong> ${evento.descricao}</p>
                         <div class="botoes-acoes">
                             <button class="btn-excluir" onclick="deletarEvento(${evento.id})">Excluir</button>
-                            <button class="btn-qrcode" onclick="baixarQRCode('http://localhost/notalise/avalia_evento.html?evento_id=${evento.id}', '${evento.nome}')">Baixar QR Code</button>
+                            <button class="btn-qrcode" onclick="baixarQRCode('${baseUrlFront}/avalia_evento.html?evento_id=${evento.id}', '${evento.nome}')">Baixar QR Code</button>
                         </div>
-                        <button class="btn-feedback" onclick="window.location.href='http://localhost/notalise/feed_back_evento.html?evento_id=${evento.id}'">Ver Feedback</button>
+                        <button class="btn-feedback" onclick="window.location.href='${baseUrlFront}/feed_back_evento.html?evento_id=${evento.id}'">Ver Feedback</button>
                     </div>
                 `;
 
@@ -118,7 +121,8 @@ async function deletarEvento(id) {
     if (!confirm('Tem certeza que deseja excluir este evento?')) return;
 
     try {
-        const response = await fetch(`http://localhost:5000/evento/${id}`, {
+        const baseUrlBackend = localStorage.getItem('baseUrlBackend');
+        const response = await fetch(`${baseUrlBackend}/evento/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
