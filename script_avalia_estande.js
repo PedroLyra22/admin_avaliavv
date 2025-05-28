@@ -49,7 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         try {
-            const response = await fetch("http://localhost:5000/avaliacao_estande", {
+            const mainIp = '10.0.1.132'
+            const portBackendApi = 5000
+            const baseUrlBackend = `http://${mainIp}:${portBackendApi}`
+            const response = await fetch(`${baseUrlBackend}/avaliacao_estande`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)

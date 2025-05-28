@@ -74,11 +74,6 @@ async function carregarFeedback(estandeId) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    const isLoggedIn = localStorage.getItem('adminLoggedIn');
-    if (!isLoggedIn) {
-        alert('Você precisa estar logado para acessar esta página.');
-        window.location.href = 'login.html';
-    }
     const estandeId = getEstandeId();
 
     carregarFeedback(estandeId);

@@ -40,9 +40,28 @@ document.getElementById('estande-form').addEventListener('submit', async functio
     }
 });
 
+function baixarQRCode(url) {
+    const qrcodeContainer = document.createElement('div');
+    const qr = new QRCode(qrcodeContainer, {
+        text: url,
+        width: 256,
+        height: 256
+    });
+
+    setTimeout(() => {
+        const img = qrcodeContainer.querySelector('img');
+        if (img) {
+            const link = document.createElement('a');
+            link.href = img.src;
+            link.download = 'qrcode.png';
+            link.click();
+        }
+    }, 300);
+}
+
+
 async function carregarEstandes() {
     try {
-        const baseUrlFront = localStorage.getItem('baseUrlFront');
         const baseUrlBackend = localStorage.getItem('baseUrlBackend');
         const response = await fetch(`${baseUrlBackend}/estande?admin_user_id=${adminId}`);
         const estandes = await response.json();
@@ -53,6 +72,7 @@ async function carregarEstandes() {
             estandes.forEach(estande => {
                 const div = document.createElement('div');
                 div.classList.add('estande');
+                const baseUrlFront = localStorage.getItem('baseUrlFront');
 
                 const imagemHTML = estande.imagem
                     ? `<img src="${estande.imagem}" alt="Imagem do estande ${estande.nome}" />`
@@ -65,7 +85,10 @@ async function carregarEstandes() {
                         <p><strong>Tema:</strong> ${estande.tema}</p>
                         <p><strong>Descrição:</strong> ${estande.descricao}</p>
                         <p><strong>ID do Evento:</strong> ${estande.evento_id}</p>
-                        <button class="btn-excluir" onclick="deletarEstande(${estande.id})">Excluir</button>
+                        <div class="botoes-acoes">
+                            <button class="btn-excluir" onclick="deletarEstande(${estande.id})">Excluir</button>
+                            <button class="btn-qrcode" onclick="baixarQRCode('${baseUrlFront}/avalia_estande.html?estande_id=${estande.id}', '${estande.nome}')">Baixar QR Code</button>
+                        </div>
                         <button class="btn-feedback" onclick="window.location.href='${baseUrlFront}/feed_back_estande.html?estande_id=${estande.id}'">Ver Feedback</button>
                     </div>
                 `;
