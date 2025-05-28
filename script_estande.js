@@ -19,7 +19,7 @@ document.getElementById('estande-form').addEventListener('submit', async functio
     };
 
     try {
-        const response = await fetch('http://localhost:5000/estande', {
+        const response = await fetch(`${baseUrlBackend}/estande`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +42,9 @@ document.getElementById('estande-form').addEventListener('submit', async functio
 
 async function carregarEstandes() {
     try {
-        const response = await fetch(`http://localhost:5000/estande?admin_user_id=${adminId}`);
+        const baseUrlFront = localStorage.getItem('baseUrlFront');
+        const baseUrlBackend = localStorage.getItem('baseUrlBackend');
+        const response = await fetch(`${baseUrlBackend}/estande?admin_user_id=${adminId}`);
         const estandes = await response.json();
         const lista = document.getElementById('estandes-lista');
         lista.innerHTML = '';
@@ -64,7 +66,7 @@ async function carregarEstandes() {
                         <p><strong>Descrição:</strong> ${estande.descricao}</p>
                         <p><strong>ID do Evento:</strong> ${estande.evento_id}</p>
                         <button class="btn-excluir" onclick="deletarEstande(${estande.id})">Excluir</button>
-                        <button class="btn-feedback" onclick="window.location.href='http://localhost/notalise/feed_back_estande.html?estande_id=${estande.id}'">Ver Feedback</button>
+                        <button class="btn-feedback" onclick="window.location.href='${baseUrlFront}/feed_back_estande.html?estande_id=${estande.id}'">Ver Feedback</button>
                     </div>
                 `;
 
@@ -80,7 +82,8 @@ async function deletarEstande(id) {
     if (!confirm('Tem certeza que deseja excluir este estande?')) return;
 
     try {
-        const response = await fetch(`http://localhost:5000/estande/${id}`, {
+        const baseUrlBackend = localStorage.getItem('baseUrlBackend');
+        const response = await fetch(`${baseUrlBackend}/estande/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
